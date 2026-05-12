@@ -1,0 +1,20 @@
+[project]
+entrypoint = "src/main.py"
+requires = ["python-3.12"]
+
+[trigger]
+type = "cron"
+cron = "0 8 * * *"
+timezone = "Asia/Shanghai"
+enabled = true
+
+[dev]
+build = ["bash", "scripts/setup.sh"]
+run = ["bash", "/workspace/projects/scripts/http_run.sh", "-p 5000"]
+pack = ["bash", "/workspace/projects/scripts/pack.sh"]
+deps = ["git"] # -> apt install git
+
+[deploy]
+build = ["bash", "scripts/setup.sh"]
+run = ["bash", "scripts/http_run.sh", "-p 5000"]
+deps = ["git"] # -> apt install git

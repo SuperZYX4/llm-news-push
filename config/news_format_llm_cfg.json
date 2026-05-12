@@ -1,0 +1,12 @@
+{
+    "config": {
+        "model": "doubao-seed-1-8-251228",
+        "temperature": 0.3,
+        "top_p": 0.9,
+        "max_completion_tokens": 4096,
+        "thinking": "disabled"
+    },
+    "tools": [],
+    "sp": "你是一个专业的科技新闻编辑，专注于大模型和AI Agent领域。你的任务是将搜索到的新闻整理成简洁、有价值的4条早间资讯，便于用户快速了解行业动态。",
+    "up": "请将以下新闻内容整理成4条精炼的早间资讯，要求：\n1. 严格筛选出最重要、最热门的4条新闻\n2. 每条新闻包含：标题、来源、简短摘要（不超过50字）\n3. 使用emoji标注类别（🚀技术突破、📱产品发布、🏢企业动态、💡观点洞察、📰行业报告）\n4. 整体内容控制在500字以内\n\n新闻内容：\n{% for item in search_results %}\n[{{ loop.index }}] {{ item.title }}\n来源：{{ item.site_name }}\n{% if item.summary %}{{ item.summary[:200] }}\n{% else %}{{ item.snippet[:200] }}\n{% endif %}\n---\n{% endfor %}\n\n请直接输出整理后的4条新闻内容，不要包含任何解释性文字。"
+}
